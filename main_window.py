@@ -7,6 +7,9 @@ from datetime import datetime
 from monitors.system_monitor import SystemMonitor
 from monitor_windows.cpu_window import CPUWindow
 from monitor_windows.memory_window import MemoryWindow
+from monitor_windows.storage_window import StorageWindow
+from monitor_windows.network_window import NetworkWindow
+from monitor_windows.process_window import ProcessWindow 
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -143,12 +146,24 @@ class MainWindow(QMainWindow):
 
     def show_storage_monitor(self):
         print("Storage Monitor button clicked")
+        if not self.monitor_windows['storage']:
+            self.monitor_windows['storage'] = StorageWindow()
+        self.monitor_windows['storage'].show()
+        self.monitor_windows['storage'].activateWindow()
         
     def show_network_monitor(self):
         print("Network Monitor button clicked")
+        if not self.monitor_windows['network']:
+            self.monitor_windows['network'] = NetworkWindow()
+        self.monitor_windows['network'].show()
+        self.monitor_windows['network'].activateWindow()
         
     def show_process_monitor(self):
         print("Process Monitor button clicked")
+        if not self.monitor_windows['process']:
+            self.monitor_windows['process'] = ProcessWindow()
+        self.monitor_windows['process'].show()
+        self.monitor_windows['process'].activateWindow()
 
 def main():
     app = QApplication(sys.argv)
