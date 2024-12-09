@@ -36,7 +36,11 @@ class SystemMonitor:
             'system': platform.system(),
             'release': platform.release(),
             'version': platform.version(),
-            'machine': platform.machine()
+            'machine': platform.machine(),
+            'architecture': platform.architecture(),
+            'processor': platform.processor(),
+            'node': platform.node(),
+            'platform': platform.platform(),
         }
     
     def get_all_info(self):
@@ -64,3 +68,8 @@ if __name__ == "__main__":
     print("\nNetwork Info:", network_monitor.get_all_info())
     print("\nProcess Info:", process_monitor.get_all_info())
     print("\nSystem Info:", system_monitor.get_all_info())
+
+    if __name__ == "__main__":
+        # Create instances of monitors
+        system_monitor = SystemMonitor()
+        print("\nSystem Info:", system_monitor.get_os_info())

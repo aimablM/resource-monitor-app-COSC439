@@ -1,12 +1,14 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel, QGroupBox, QTableWidget, QTableWidgetItem
 from PyQt6.QtCore import QTimer
 from monitors.process_monitor import ProcessMonitor
+from monitor_windows.utils import create_emoji_icon
 
 class ProcessWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Process Monitor")
-        self.setMinimumSize(800, 600)
+        self.setMinimumSize(600, 800)
+        self.setWindowIcon(create_emoji_icon('💾'))
         
         # Initialize process monitor
         self.process_monitor = ProcessMonitor()
